@@ -28,24 +28,33 @@
             margin: 0;
             padding: 0;
         }
+body {
+    background-color: var(--bg-color);
+    /* Adds a subtle cyan ambient glow at the top to tie the theme together */
+    background-image: radial-gradient(circle at 50% 0%, rgba(0, 255, 204, 0.05) 0%, transparent 70%);
+    color: var(--text-main);
+    font-family: 'Fira Code', monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Fira Code', monospace;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Sleek Minimalist Cyber Grid */
-        .cyber-grid {
-            position: fixed;
-            top: 0; 
-            left: 0;
-            width: 100vw; 
-            height: 100vh;
-            background-size: 40px 40px;
-            background-image:
+/* Sleek Minimalist Cyber Grid */
+.cyber-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: 40px 40px;
+    /* Increased opacity from 0.03 to 0.08 to make the grid visible but not distracting */
+    background-image: 
+        linear-gradient(rgba(0, 255, 204, 0.08) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(0, 255, 204, 0.08) 1px, transparent 1px);
+    z-index: -1;
+    /* Expanded the center visibility from 30% to 60% before it fades out */
+    mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+}
                 linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
             z-index: -1;
