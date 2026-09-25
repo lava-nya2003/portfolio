@@ -3,150 +3,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lavanya Sajeev | Cyber Portfolio</title>
+    <title>Lavanya S | Cyber Security & Cloud Portfolio</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animate On Scroll CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
-        
-        body, html {
+        :root {
+            --bg-color: #050505;
+            --accent-color: #00ffcc;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --card-bg: rgba(15, 15, 15, 0.6);
+            --card-border: rgba(0, 255, 204, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0a0a0a;
-            color: #00ff00;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
             font-family: 'Fira Code', monospace;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Places the particle canvas behind the content */
+        /* Particle Background */
         #particles-js {
             position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
+            width: 100vw;
+            height: 100vh;
             top: 0;
             left: 0;
+            z-index: -1;
         }
 
-        /* Keeps text and cards clickable above the background */
-        .content {
-            position: relative;
-            z-index: 2;
-            padding: 50px;
-            max-width: 900px;
+        /* Layout & Containers */
+        .container {
+            max-width: 1100px;
             margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         h1 {
-            font-size: 3.5rem;
-            color: #ffffff;
-            text-shadow: 0 0 10px #00ff00;
-            margin-bottom: 5px;
+            font-size: 4rem;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px var(--accent-color);
         }
 
-        .terminal-text {
-            font-size: 1.5rem;
-            color: #00ff00;
-            margin-bottom: 50px;
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+            font-size: 0.9rem;
         }
 
-        .terminal-prefix {
-            color: #ff0055;
+        .contact-info a, .contact-info span {
+            color: var(--accent-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
         }
 
-        /* Grid layout for the interactive cards */
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+        .contact-info a:hover {
+            text-shadow: 0 0 10px var(--accent-color);
         }
 
-        .card {
-            background: rgba(15, 15, 15, 0.85);
-            border: 1px solid #222;
+        section {
+            margin: 80px 0;
+        }
+
+        h2.section-title {
+            font-size: 2rem;
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+
+        p.summary {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            background: var(--card-bg);
             padding: 25px;
-            border-radius: 8px;
-            transition: all 0.3s ease-in-out;
-            backdrop-filter: blur(5px);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
         }
 
-        /* Neon glow effect on hover */
+        /* Interactive Grid Layouts */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+        /* Neon Glassmorphism Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 25px;
+            backdrop-filter: blur(5px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-color));
+            transition: left 0.5s ease;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
         .card:hover {
-            border-color: #00ff00;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0, 255, 204, 0.15);
         }
 
         .card h3 {
-            color: #ffffff;
-            margin-top: 0;
-            border-bottom: 1px solid #333;
-            padding-bottom: 10px;
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
         }
 
-        .card p {
-            color: #aaaaaa;
+        .card h4 {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .card ul {
+            list-style: none;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
             font-size: 0.95rem;
-            line-height: 1.5;
+            color: #ccc;
+        }
+
+        .card ul li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Skill Tags */
+        .skill-category { margin-bottom: 25px; }
+        .skill-category h3 { margin-bottom: 10px; color: #fff; }
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag {
+            background: rgba(0, 255, 204, 0.1);
+            border: 1px solid var(--card-border);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            cursor: default;
+        }
+        .tag:hover {
+            background: var(--accent-color);
+            color: #000;
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Particle Background -->
     <div id="particles-js"></div>
 
-    <!-- Main Content -->
-    <div class="content">
-        <h1>Lavanya Sajeev</h1>
-        <div class="terminal-text">
-            <span class="terminal-prefix">root@lavanya:~$</span> <span id="typed"></span>
-        </div>
+    <div class="container">
+        <!-- Hero Section -->
+        <header data-aos="fade-down">
+            <h1>Lavanya S</h1>
+            <h2>> <span id="typed-roles"></span></h2>
+            
+            <div class="contact-info">
+                <span><i class="fas fa-map-marker-alt"></i> Kochi, Kerala</span>
+                <a href="mailto:lavanyasajeev@gmail.com"><i class="fas fa-envelope"></i> lavanyasajeev@gmail.com</a>
+                <span><i class="fas fa-phone"></i> 7510203470</span>
+                <a href="https://www.linkedin.com/in/lavanya-sajeev-/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+            </div>
+        </header>
 
-        <h2>> Projects & Training_</h2>
-        <div class="card-container">
-            <div class="card">
-                <h3>Wazuh SIEM Home Lab</h3>
-                <p>Configured an open-source Wazuh SIEM monitoring platform alongside Kali Linux and Ubuntu Server to build a full-stack SOC environment.</p>
+        <!-- Professional Summary -->
+        <section data-aos="fade-up">
+            <h2 class="section-title">01. Initialize_Profile</h2>
+            <p class="summary">
+                Computer Science graduate with hands-on, project-based experience administering Linux systems, configuring servers on AWS, and monitoring infrastructure logs and services for reliability. Comfortable with command-line troubleshooting, networking fundamentals (TCP/IP, DNS, HTTP/S, SSH, firewalls), and basic Bash/Python scripting. Built and maintained a live AWS EC2 server environment, including storage scaling, partition management, and log-pipeline configuration, gaining practical exposure to system maintenance, monitoring, and documentation. Eager to grow into Infrastructure, Cloud, and DevSecOps engineering under the guidance of senior engineers, with a strong analytical mindset and consistent, methodical work habits.
+            </p>
+        </section>
+
+        <!-- Technical Skills -->
+        <section data-aos="fade-up">
+            <h2 class="section-title">02. Technical_Payload</h2>
+            <div class="card grid-2">
+                <div class="skill-category">
+                    <h3>Operating Systems</h3>
+                    <div class="tags">
+                        <span class="tag">Linux (Ubuntu)</span>
+                        <span class="tag">Kali Linux</span>
+                        <span class="tag">Windows 10/Server</span>
+                        <span class="tag">CLI Troubleshooting</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Infrastructure & Cloud</h3>
+                    <div class="tags">
+                        <span class="tag">AWS EC2</span>
+                        <span class="tag">AWS EBS</span>
+                        <span class="tag">Linux Partitions (growpart, resize2fs)</span>
+                        <span class="tag">Oracle VM VirtualBox</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Networking & Security</h3>
+                    <div class="tags">
+                        <span class="tag">TCP/IP & DNS</span>
+                        <span class="tag">SSH & Firewalls</span>
+                        <span class="tag">Wireshark (Packet Analysis)</span>
+                        <span class="tag">Wazuh SIEM/XDR</span>
+                        <span class="tag">MITRE ATT&CK</span>
+                        <span class="tag">Vulnerability Assessment</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Monitoring & Scripting</h3>
+                    <div class="tags">
+                        <span class="tag">Log Analysis (FIM)</span>
+                        <span class="tag">Alert Triage</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Bash/Shell Basics</span>
+                        <span class="tag">Nmap</span>
+                        <span class="tag">Git/GitHub</span>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <h3>TryHackMe - Level 47</h3>
-                <p>Practiced hands-on cybersecurity labs focusing on threat detection, holding the Junior Security Professional ranking.</p>
+        </section>
+
+        <!-- Projects -->
+        <section>
+            <h2 class="section-title" data-aos="fade-right">03. Executable_Projects</h2>
+            <div class="grid-2">
+                <div class="card" data-aos="zoom-in-up">
+                    <h3>Cloud-Native Server Deployment & Monitoring - AWS EC2</h3>
+                    <h4>2026 | <a href="https://github.com/lava-nya2003/AWS-WAZUH-SOC-LAB.git" target="_blank" style="color:var(--accent-color); text-decoration:none;">GitHub Repository <i class="fab fa-github"></i></a></h4>
+                    <ul>
+                        <li>Provisioned and configured a Linux server on AWS EC2 end-to-end, handling installation, service setup, and ongoing system maintenance.</li>
+                        <li>Monitored system performance and log data continuously; diagnosed and resolved package deployment and database indexing failures.</li>
+                        <li>Resolved storage capacity issues under live conditions by executing AWS EBS volume scale-ups and Linux partition expansions (growpart, resize2fs) without service downtime.</li>
+                        <li>Configured and maintained log-shipping pipelines (Filebeat) to support real-time infrastructure monitoring.</li>
+                        <li>Documented server configuration, troubleshooting steps, and monitoring setup for repeatability.</li>
+                    </ul>
+                </div>
+                
+                <div class="card" data-aos="zoom-in-up" data-aos-delay="100">
+                    <h3>Virtualized Infrastructure & Network Lab Setup</h3>
+                    <h4>2025</h4>
+                    <ul>
+                        <li>Built and administered a multi-machine virtualized network using Bridged Adapters, configuring reliable connectivity and secure communication between systems.</li>
+                        <li>Deployed, configured, and maintained monitoring agents across multiple endpoints, performing routine configuration checks and system health assessments.</li>
+                        <li>Performed systematic troubleshooting and testing cycles to validate system configuration changes and monitoring reliability.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="card">
-                <h3>CEH & Cyber Defense</h3>
-                <p>Completed Advanced Diploma in Cyber Defense at RedTeam Hacker Academy and actively preparing for CEH v13 certification.</p>
+        </section>
+
+        <!-- Education & Certifications -->
+        <section>
+            <h2 class="section-title" data-aos="fade-right">04. Knowledge_Base</h2>
+            <div class="grid-2">
+                <!-- Education -->
+                <div class="card" data-aos="fade-right">
+                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <div style="margin-top:20px;">
+                        <h4 style="margin-bottom:5px;">Advanced Diploma in Cyber Defense</h4>
+                        <p style="color:#ccc; font-size:0.9rem; margin-bottom:15px;">EC-Council (CEH) RedTeam Hacker Academy | 2025-2026</p>
+                        
+                        <h4 style="margin-bottom:5px;">Bachelor of Technology in Computer Science</h4>
+                        <p style="color:#ccc; font-size:0.9rem; margin-bottom:15px;">APJ Abdul Kalam Technological University | Nehru College of Engineering and Research Centre | 2021-2025</p>
+
+                        <h4 style="margin-bottom:5px;">Higher Secondary Education</h4>
+                        <p style="color:#ccc; font-size:0.9rem;">Kerala State Board | Govt. Moyan MGHSS | 2019-2021</p>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="card" data-aos="fade-left">
+                    <h3><i class="fas fa-certificate"></i> Achievements & Certifications</h3>
+                    <ul style="margin-top:20px;">
+                        <li>
+                            <strong style="color:var(--accent-color);">Certified Ethical Hacker (CEH V13)</strong> - EC Council
+                        </li>
+                        <li style="margin-top:15px;">
+                            <strong style="color:var(--accent-color);">Advent of Cyber 2025</strong> - TryHackMe<br>
+                            <span style="font-size:0.85rem; color:#888;">Completed a 24-day hands-on challenge covering log analysis, web exploitation, forensic analysis, and system/service monitoring.</span>
+                        </li>
+                        <li style="margin-top:15px;">
+                            <strong style="color:var(--accent-color);">Certificate Course in Python</strong> - G-Tec<br>
+                            <span style="font-size:0.85rem; color:#888;">Completed foundational training in Python syntax, data types, and problem-solving logic, applicable to infrastructure automation scripting.</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </section>
     </div>
 
-    <!-- Scripts for Interactive Effects -->
+    <!-- Interactive Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <script>
-        // 1. Terminal Typing Effect
-        var typed = new Typed('#typed', {
-            strings: ['Initializing profile...', 'Cybersecurity Analyst', 'CEH Aspirant', 'Threat Hunter', 'Access Granted.'],
-            typeSpeed: 50,
-            backSpeed: 30,
-            loop: true,
-            backDelay: 2000
+        // 1. Initialize Animate On Scroll (AOS)
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
         });
 
-        // 2. Interactive Network Background
+        // 2. Typing Effect Initialization
+        var typed = new Typed('#typed-roles', {
+            strings: [
+                'Computer Science Graduate', 
+                'Linux Systems Administrator', 
+                'AWS Server Architect', 
+                'DevSecOps Enthusiast'
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true
+        });
+
+        // 3. Particles.js Initialization
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#00ff00" },
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00ffcc" },
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.4, "random": false },
+                "opacity": { "value": 0.3, "random": false },
                 "size": { "value": 3, "random": true },
                 "line_linked": {
                     "enable": true,
                     "distance": 150,
-                    "color": "#00ff00",
+                    "color": "#00ffcc",
                     "opacity": 0.2,
                     "width": 1
                 },
@@ -154,21 +392,20 @@
                     "enable": true,
                     "speed": 1.5,
                     "direction": "none",
-                    "random": false,
-                    "straight": false,
+                    "random": true,
                     "out_mode": "out",
-                    "bounce": false,
+                    "bounce": false
                 }
             },
             "interactivity": {
                 "detect_on": "canvas",
                 "events": {
-                    "onhover": { "enable": true, "mode": "grab" }, // Lines connect to cursor on hover
-                    "onclick": { "enable": true, "mode": "push" }, // Adds particles on click
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
                     "resize": true
                 },
                 "modes": {
-                    "grab": { "distance": 180, "line_linked": { "opacity": 0.8 } },
+                    "grab": { "distance": 140, "line_linked": { "opacity": 0.8 } },
                     "push": { "particles_nb": 3 }
                 }
             },
