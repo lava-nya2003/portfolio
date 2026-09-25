@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lavanya Sajeev | Cyber Security & Cloud Portfolio</title>
+    <title>Lavanya S | Cyber Security & Cloud Portfolio</title>
     
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
             --secondary-accent: #b026ff; /* Secondary Neon Violet */
             --text-main: #e0e0e0;
             --text-muted: #888888;
-            --card-bg: rgba(15, 15, 15, 0.6);
+            --card-bg: rgba(10, 10, 10, 0.75);
             --card-border: rgba(0, 255, 204, 0.2);
         }
 
@@ -37,14 +37,15 @@
             overflow-x: hidden;
         }
 
-        /* Particle Background */
-        #particles-js {
+        /* Matrix Digital Rain Canvas */
+        #matrix-canvas {
             position: fixed;
-            width: 100vw;
-            height: 100vh;
             top: 0;
             left: 0;
+            width: 100vw;
+            height: 100vh;
             z-index: -1;
+            opacity: 0.85;
         }
 
         /* Layout & Containers */
@@ -124,7 +125,7 @@
             border: 1px solid var(--card-border);
             border-radius: 8px;
             padding: 25px;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px); /* Increased blur for readability over Matrix code */
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
@@ -152,7 +153,7 @@
         /* Standout Card for Latest Education */
         .standout-card {
             border-color: rgba(176, 38, 255, 0.4);
-            background: linear-gradient(135deg, rgba(15,15,15,0.8) 0%, rgba(176, 38, 255, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(15,15,15,0.85) 0%, rgba(176, 38, 255, 0.1) 100%);
             box-shadow: 0 0 15px rgba(176, 38, 255, 0.1);
         }
 
@@ -224,7 +225,8 @@
 </head>
 <body>
 
-    <div id="particles-js"></div>
+    <!-- Cyber Security Matrix Canvas -->
+    <canvas id="matrix-canvas"></canvas>
 
     <div class="container">
         <!-- Hero Section -->
@@ -300,7 +302,7 @@
             <div class="grid-2">
                 <div class="card" data-aos="zoom-in-up">
                     <h3>Cloud-Native Server Deployment & Monitoring - AWS EC2</h3>
-                    <h4>2026 | <a href="https://github.com/lava-nya2003/AWS-WAZUH-SOC-LAB.git" target="_blank" style="color:var(--accent-color); text-decoration:none;">GitHub Repository <i class="fab fa-github"></i></a></h4>
+                    <h4>2026 | <a href="url?id=2/AWS-WAZUH-SOC-LAB.git" target="_blank" style="color:var(--accent-color); text-decoration:none;">GitHub Repository <i class="fab fa-github"></i></a></h4>
                     <ul>
                         <li>Provisioned and configured a Linux server on AWS EC2 end-to-end, handling installation, service setup, and ongoing system maintenance.</li>
                         <li>Monitored system performance and log data continuously; diagnosed and resolved package deployment and database indexing failures.</li>
@@ -326,7 +328,7 @@
         <section>
             <h2 class="section-title" data-aos="fade-right">04. Knowledge_Base</h2>
             
-            <!-- NEW: Standout Latest Education -->
+            <!-- Standout Latest Education -->
             <div class="card standout-card" data-aos="fade-up" style="margin-bottom: 30px;">
                 <h3><i class="fas fa-user-shield"></i> Latest Qualification</h3>
                 <div style="margin-top:15px;">
@@ -372,7 +374,6 @@
     </div>
 
     <!-- Interactive Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
@@ -398,43 +399,57 @@
             loop: true
         });
 
-        // 3. Particles.js Initialization
-        particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#00ffcc" },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.3, "random": false },
-                "size": { "value": 3, "random": true },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#00ffcc",
-                    "opacity": 0.2,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 1.5,
-                    "direction": "none",
-                    "random": true,
-                    "out_mode": "out",
-                    "bounce": false
+        // 3. Matrix Digital Rain Effect
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas to full screen
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Characters for the rain (Katakana + Latin + Numerals)
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレゲゼデベペオォコソトノホモヨョロゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789@#$%&*<>';
+        const alphabet = katakana + latin + nums;
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const rainDrops = [];
+
+        // Initialize raindrops for each column
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+
+        const drawMatrix = () => {
+            // Translucent black background creates the fading trail effect
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Cyber Cyan text color matching your theme
+            ctx.fillStyle = '#00ffcc';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                // Reset drop to top randomly to create staggered rain
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
                 }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": { "enable": true, "mode": "grab" },
-                    "onclick": { "enable": true, "mode": "push" },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": { "distance": 140, "line_linked": { "opacity": 0.8 } },
-                    "push": { "particles_nb": 3 }
-                }
-            },
-            "retina_detect": true
+                rainDrops[i]++;
+            }
+        };
+
+        // Run the animation
+        setInterval(drawMatrix, 35);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         });
     </script>
 </body>
