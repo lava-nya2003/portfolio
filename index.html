@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lavanya S | Cyber Security & Cloud Portfolio</title>
+    <title>Lavanya Sajeev | Cyber Security & Cloud Portfolio</title>
     
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
             --secondary-accent: #b026ff; /* Secondary Neon Violet */
             --text-main: #e0e0e0;
             --text-muted: #888888;
-            --card-bg: rgba(10, 10, 10, 0.75);
+            --card-bg: rgba(15, 15, 15, 0.95); /* Much darker for perfect readability */
             --card-border: rgba(0, 255, 204, 0.2);
         }
 
@@ -37,15 +37,21 @@
             overflow-x: hidden;
         }
 
-        /* Matrix Digital Rain Canvas */
-        #matrix-canvas {
+        /* Sleek Minimalist Cyber Grid */
+        .cyber-grid {
             position: fixed;
-            top: 0;
+            top: 0; 
             left: 0;
-            width: 100vw;
+            width: 100vw; 
             height: 100vh;
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
             z-index: -1;
-            opacity: 0.85;
+            /* Fades the grid out at the edges for a polished look */
+            mask-image: radial-gradient(circle at center, black 30%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 100%);
         }
 
         /* Layout & Containers */
@@ -68,7 +74,7 @@
             font-size: 4rem;
             color: #fff;
             margin-bottom: 10px;
-            text-shadow: 0 0 20px var(--accent-color);
+            text-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
         }
 
         .contact-info {
@@ -113,7 +119,7 @@
             padding: 25px;
             border-left: 4px solid var(--accent-color);
             border-radius: 4px;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
         /* Interactive Grid Layouts */
@@ -125,10 +131,10 @@
             border: 1px solid var(--card-border);
             border-radius: 8px;
             padding: 25px;
-            backdrop-filter: blur(8px); /* Increased blur for readability over Matrix code */
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
         .card::before {
@@ -145,7 +151,7 @@
         }
 
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             border-color: var(--accent-color);
             box-shadow: 0 10px 30px rgba(0, 255, 204, 0.15);
         }
@@ -153,8 +159,7 @@
         /* Standout Card for Latest Education */
         .standout-card {
             border-color: rgba(176, 38, 255, 0.4);
-            background: linear-gradient(135deg, rgba(15,15,15,0.85) 0%, rgba(176, 38, 255, 0.1) 100%);
-            box-shadow: 0 0 15px rgba(176, 38, 255, 0.1);
+            background: linear-gradient(135deg, rgba(15,15,15,0.95) 0%, rgba(176, 38, 255, 0.05) 100%);
         }
 
         .standout-card::before {
@@ -203,7 +208,7 @@
         .skill-category h3 { margin-bottom: 10px; color: #fff; }
         .tags { display: flex; flex-wrap: wrap; gap: 10px; }
         .tag {
-            background: rgba(0, 255, 204, 0.1);
+            background: rgba(0, 255, 204, 0.05);
             border: 1px solid var(--card-border);
             padding: 8px 15px;
             border-radius: 20px;
@@ -212,9 +217,9 @@
             cursor: default;
         }
         .tag:hover {
-            background: var(--accent-color);
-            color: #000;
-            box-shadow: 0 0 15px var(--accent-color);
+            background: rgba(0, 255, 204, 0.15);
+            border-color: var(--accent-color);
+            color: #fff;
         }
 
         @media (max-width: 768px) {
@@ -225,13 +230,13 @@
 </head>
 <body>
 
-    <!-- Cyber Security Matrix Canvas -->
-    <canvas id="matrix-canvas"></canvas>
+    <!-- Minimalist Static Cyber Grid Background -->
+    <div class="cyber-grid"></div>
 
     <div class="container">
         <!-- Hero Section -->
         <header data-aos="fade-down">
-            <h1>Lavanya Sajeev</h1>
+            <h1>Lavanya S</h1>
             <h2>> <span id="typed-roles"></span></h2>
             
             <div class="contact-info">
@@ -245,7 +250,7 @@
         <section data-aos="fade-up">
             <h2 class="section-title">01. Initialize_Profile</h2>
             <p class="summary">
-                Btech Computer Science graduate with hands-on, project-based experience administering Linux systems, configuring servers on AWS, and monitoring infrastructure logs and services for reliability. Comfortable with command-line troubleshooting, networking fundamentals (TCP/IP, DNS, HTTP/S, SSH, firewalls), and basic Bash/Python scripting. Built and maintained a live AWS EC2 server environment, including storage scaling, partition management, and log-pipeline configuration, gaining practical exposure to system maintenance, monitoring, and documentation. Eager to grow into Infrastructure, Cloud, and DevSecOps engineering under the guidance of senior engineers, with a strong analytical mindset and consistent, methodical work habits.
+                Computer Science graduate with hands-on, project-based experience administering Linux systems, configuring servers on AWS, and monitoring infrastructure logs and services for reliability. Comfortable with command-line troubleshooting, networking fundamentals (TCP/IP, DNS, HTTP/S, SSH, firewalls), and basic Bash/Python scripting. Built and maintained a live AWS EC2 server environment, including storage scaling, partition management, and log-pipeline configuration, gaining practical exposure to system maintenance, monitoring, and documentation. Eager to grow into Infrastructure, Cloud, and DevSecOps engineering under the guidance of senior engineers, with a strong analytical mindset and consistent, methodical work habits.
             </p>
         </section>
 
@@ -302,7 +307,7 @@
             <div class="grid-2">
                 <div class="card" data-aos="zoom-in-up">
                     <h3>Cloud-Native Server Deployment & Monitoring - AWS EC2</h3>
-                    <h4>2026 | <a href="url?id=2/AWS-WAZUH-SOC-LAB.git" target="_blank" style="color:var(--accent-color); text-decoration:none;">GitHub Repository <i class="fab fa-github"></i></a></h4>
+                    <h4>2026 | <a href="https://lava-nya2003.github.io/portfolio/url?id=2/AWS-WAZUH-SOC-LAB.git" target="_blank" style="color:var(--accent-color); text-decoration:none;">GitHub Repository <i class="fab fa-github"></i></a></h4>
                     <ul>
                         <li>Provisioned and configured a Linux server on AWS EC2 end-to-end, handling installation, service setup, and ongoing system maintenance.</li>
                         <li>Monitored system performance and log data continuously; diagnosed and resolved package deployment and database indexing failures.</li>
@@ -397,59 +402,6 @@
             backSpeed: 30,
             backDelay: 2000,
             loop: true
-        });
-
-        // 3. Matrix Digital Rain Effect
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
-
-        // Set canvas to full screen
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        // Characters for the rain (Katakana + Latin + Numerals)
-        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレゲゼデベペオォコソトノホモヨョロゴゾドボポヴッン';
-        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const nums = '0123456789@#$%&*<>';
-        const alphabet = katakana + latin + nums;
-
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        const rainDrops = [];
-
-        // Initialize raindrops for each column
-        for (let x = 0; x < columns; x++) {
-            rainDrops[x] = 1;
-        }
-
-        const drawMatrix = () => {
-            // Translucent black background creates the fading trail effect
-            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Cyber Cyan text color matching your theme
-            ctx.fillStyle = '#00ffcc';
-            ctx.font = fontSize + 'px monospace';
-
-            for (let i = 0; i < rainDrops.length; i++) {
-                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-
-                // Reset drop to top randomly to create staggered rain
-                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    rainDrops[i] = 0;
-                }
-                rainDrops[i]++;
-            }
-        };
-
-        // Run the animation
-        setInterval(drawMatrix, 35);
-
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
         });
     </script>
 </body>
